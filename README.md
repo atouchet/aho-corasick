@@ -1,8 +1,8 @@
 aho-corasick
 ============
 A library for finding occurrences of many patterns at once with SIMD
-acceleration in some cases. This library provides multiple pattern
-search principally through an implementation of the
+acceleration in some cases. This library provides multiple pattern search
+principally through an implementation of the
 [Aho-Corasick algorithm](https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm),
 which builds a finite state machine for executing searches in linear time.
 Features include case insensitive matching, overlapping matches, fast searching
@@ -21,8 +21,8 @@ https://docs.rs/aho-corasick
 
 ### Usage
 
-Run `cargo add aho-corasick` to automatically add this crate as a dependency
-in your `Cargo.toml` file.
+Run `cargo add aho-corasick` to automatically add this crate as a dependency in
+your `Cargo.toml` file.
 
 
 ### Example: basic searching
@@ -108,9 +108,9 @@ with another. In many cases, overlapping matches may not be desired, such as
 the case of finding all successive non-overlapping matches like you might with
 a standard regular expression.
 
-Unfortunately the "obvious" way to modify the Aho-Corasick algorithm to do
-this doesn't always work in the expected way, since it will report matches as
-soon as they are seen. For example, consider matching the regex `Samwise|Sam`
+Unfortunately the "obvious" way to modify the Aho-Corasick algorithm to do this
+doesn't always work in the expected way, since it will report matches as soon
+as they are seen. For example, consider matching the regex `Samwise|Sam`
 against the text `Samwise`. Most regex engines (that are Perl-like, or
 non-POSIX) will report `Samwise` as a match, but the standard Aho-Corasick
 algorithm modified for reporting non-overlapping matches will report `Sam`.
@@ -130,8 +130,8 @@ let mat = ac.find(haystack).expect("should have a match");
 assert_eq!("Sam", &haystack[mat.start()..mat.end()]);
 ```
 
-And now here's the leftmost-first version, which matches how a Perl-like
-regex will work:
+And now here's the leftmost-first version, which matches how a Perl-like regex
+will work:
 
 ```rust
 use aho_corasick::{AhoCorasick, MatchKind};
@@ -168,5 +168,5 @@ supported version of Rust.
 
 ### FFI bindings
 
-* [G-Research/ahocorasick_rs](https://github.com/G-Research/ahocorasick_rs/)
-is a Python wrapper for this library.
+* [G-Research/ahocorasick_rs](https://github.com/G-Research/ahocorasick_rs) is
+  a Python wrapper for this library.
